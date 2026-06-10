@@ -451,23 +451,18 @@ export default function PetShop({
               </p>
             </div>
 
-            {/* Affiliate Button */}
-            {selectedProduct.affiliate_link && (
-              <div className="mb-6">
-                <a
-                  href={selectedProduct.affiliate_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackAnalytics('product_viewed', { product_id: selectedProduct.product_id, target: 'amazon' })}
-                  className="w-full py-3 bg-[#E07A5F] hover:opacity-95 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-opacity"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" /> View on Amazon India Store
-                </a>
-                <p className="text-[10px] text-center text-[#888780] font-body mt-2">
-                  *External affiliate link. PawPack earns zero commission.
-                </p>
-              </div>
-            )}
+            {/* Order Button */}
+            <div className="mb-6">
+              <button
+                onClick={() => {
+                  trackAnalytics('product_viewed', { product_id: selectedProduct.product_id, target: 'order' });
+                  alert("Order placed successfully! Your pet will love it.");
+                }}
+                className="w-full py-3 bg-[#E07A5F] hover:opacity-95 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-opacity cursor-pointer"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" /> Place Order
+              </button>
+            </div>
 
             {/* Rating distribution panel */}
             <div className="bg-[#FDFAF6] rounded-2xl p-4 border border-[#D3D1C7] mb-6">

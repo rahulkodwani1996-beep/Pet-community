@@ -40,7 +40,7 @@ export interface VetQuestion {
 
 export interface Comment {
   comment_id: string;
-  post_id: string;
+  post_id: string; // or tip_id
   author_id: string;
   body: string; // max 500 chars
   created_at: string;
@@ -99,6 +99,7 @@ export interface VetTip {
   is_featured: boolean;
   helpful_ups: string[]; // uids of users who liked this tip
   helpful_downs: string[]; // uids of users who disliked this tip
+  comments?: Comment[];
 }
 
 export interface Notification {

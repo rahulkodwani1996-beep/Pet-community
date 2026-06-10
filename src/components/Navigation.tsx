@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Bell, MessageSquare, ShoppingBag, BookOpen, User, Sparkles, Search, Clock, X } from 'lucide-react';
 import { Notification } from '../types';
 

@@ -504,6 +504,26 @@ export default function App() {
     localStorage.setItem('pawpack_tips', JSON.stringify(updated));
   };
 
+  const handleCommentTip = (tipId: string, commentBody: string) => {
+    if (!currentUser) return;
+    const updated = tips.map(t => {
+      if (t.tip_id === tipId) {
+        const newComment = {
+          comment_id: `cmt_${Date.now()}`,
+          post_id: tipId,
+          author_id: currentUser.user_id,
+          body: commentBody,
+          created_at: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }),
+        };
+        return { ...t, comments: [...(t.comments || []), newComment] };
+      }
+      return t;
+    });
+    setTips(updated);
+    localStorage.setItem('pawpack_tips', JSON.stringify(updated));
+    trackAnalytics('comment_added', { tip_id: tipId });
+  };
+
   // Update profile states
   const handleUpdateProfile = (userObj: User) => {
     setCurrentUser(userObj);
@@ -726,6 +746,7 @@ export default function App() {
                 activeSpecies={activeSpecies}
                 trackAnalytics={trackAnalytics}
                 onVoteTip={handleVoteTip}
+                onCommentTip={handleCommentTip}
                 onAddTip={handleAddTip}
                 onPromptSignUp={() => triggerSoftSignUp('downvote or upvote veterinary handbooks')}
                 initialTipId={initialTipId}

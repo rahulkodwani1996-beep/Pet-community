@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { VetTip, User } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
 import {
+  MessageSquare,
   BookOpen,
   Search,
   Book,
@@ -146,6 +147,7 @@ interface PetLearnProps {
   searchQuery?: string;
   savedTipIds?: string[];
   onToggleBookmarkTip?: (tipId: string) => void;
+  onCommentTip?: (tipId: string, commentBody: string) => void;
 }
 
 export default function PetLearn({
@@ -160,7 +162,8 @@ export default function PetLearn({
   onClearInitialTipId,
   searchQuery: globalSearchQuery = '',
   savedTipIds = [],
-  onToggleBookmarkTip
+  onToggleBookmarkTip,
+  onCommentTip
 }: PetLearnProps) {
   // Navigation
   const [selectedTip, setSelectedTip] = useState<VetTip | null>(null);
@@ -175,6 +178,7 @@ export default function PetLearn({
   // Recent Searches state
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [shareToastText, setShareToastText] = useState('');
+  const [newCommentBody, setNewCommentBody] = useState('');
 
   // PetMatch Interactive Quiz states
   const [quizActive, setQuizActive] = useState(false);
@@ -688,6 +692,71 @@ export default function PetLearn({
                 >
                   Sign in to rate article
                 </button>
+              )}
+            </div>
+
+            {/* Comments Section */}
+            <div className="bg-white rounded-2xl border border-[#D3D1C7] p-5 mb-8">
+              <h3 className="font-sans font-extrabold text-[#3D405B] text-sm mb-4 flex items-center gap-2">
+                <MessageSquare className="w-4 h-4 text-[#E07A5F]" /> 
+                Comments ({selectedTip.comments?.length || 0})
+              </h3>
+              
+              {/* Comment List */}
+              <div className="space-y-4 mb-5">
+                {(selectedTip.comments || []).map(comment => (
+                  <div key={comment.comment_id} className="bg-[#FDFAF6] p-3 rounded-xl border border-[#D3D1C7]/50">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-6 h-6 rounded-full bg-[#E07A5F]/20 flex items-center justify-center text-[10px] font-bold text-[#E07A5F]">
+                        {comment.author_id.substring(0, 2).toUpperCase()}
+                      </div>
+                      <span className="text-[10px] font-bold text-[#3D405B]">User {comment.author_id.substring(0,4)}</span>
+                      <span className="text-[9px] text-[#888780]">{comment.created_at}</span>
+                    </div>
+                    <p className="text-xs text-[#2C2C2A] font-body leading-relaxed">{comment.body}</p>
+                  </div>
+                ))}
+                {(!selectedTip.comments || selectedTip.comments.length === 0) && (
+                  <p className="text-xs text-[#888780] italic">No comments yet. Be the first to share your thoughts!</p>
+                )}
+              </div>
+
+              {/* Add Comment Input */}
+              {currentUser ? (
+                <div className="flex gap-2">
+                  <input 
+                    type="text" 
+                    value={newCommentBody}
+                    onChange={(e) => setNewCommentBody(e.target.value)}
+                    placeholder="Add a comment... (e.g. 'must read')"
+                    className="flex-1 px-3 py-2 bg-[#FDFAF6] border border-[#D3D1C7] rounded-xl text-xs focus:outline-none focus:border-[#888780]"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && newCommentBody.trim() && onCommentTip) {
+                        onCommentTip(selectedTip.tip_id, newCommentBody.trim());
+                        setNewCommentBody('');
+                      }
+                    }}
+                  />
+                  <button 
+                    onClick={() => {
+                      if (newCommentBody.trim() && onCommentTip) {
+                        onCommentTip(selectedTip.tip_id, newCommentBody.trim());
+                        setNewCommentBody('');
+                      }
+                    }}
+                    disabled={!newCommentBody.trim()}
+                    className="px-4 py-2 bg-[#E07A5F] text-white font-bold text-xs rounded-xl disabled:opacity-50 transition-opacity"
+                  >
+                    Post
+                  </button>
+                </div>
+              ) : (
+                <div className="text-center p-3 bg-[#FDFAF6] rounded-xl border border-dashed border-[#D3D1C7]">
+                  <p className="text-xs text-[#888780] mb-2">Sign in to join the conversation</p>
+                  <button onClick={onPromptSignUp} className="text-xs font-bold text-[#E07A5F] hover:underline">
+                    Sign in here
+                  </button>
+                </div>
               )}
             </div>
 
