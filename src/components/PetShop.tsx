@@ -19,7 +19,8 @@ import {
   MessageSquare,
   ThumbsUp,
   AlertCircle,
-  Check
+  Check,
+  ShoppingBag
 } from 'lucide-react';
 
 interface PetShopProps {
