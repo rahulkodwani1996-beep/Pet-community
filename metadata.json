@@ -1,0 +1,8 @@
+{
+  "name": "PawPack",
+  "description": "A high-fidelity mobile-first community app for dog and cat parents featuring community posts, product reviews, and clinical vet tutorials.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

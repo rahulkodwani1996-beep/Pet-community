@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+/* Custom visual signatures for high-fidelity interactive engagement */
+.bento-card {
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+}
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -4px rgba(224, 122, 95, 0.12), 0 10px 15px -3px rgba(224, 122, 95, 0.08);
+}
+
+.genz-badge {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wiggle-hover:hover .wiggle-icon {
+  animation: logo-wiggle 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes logo-wiggle {
+  0% { transform: rotate(-10deg) scale(1.15); }
+  100% { transform: rotate(14deg) scale(1.15); }
+}
+
+.tap-active:active {
+  transform: scale(0.95);
+}
+
+/* Custom fancy scrollbar representing modern polished touch interaction */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E3E1D7;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E07A5F;
+}
+
+/* Modern Dark Mode comprehensive theme overrides */
+.dark {
+  color-scheme: dark;
+  background-color: #141416 ;
+  color: #F4F4F5 ;
+}
+
+.dark body {
+  background-color: #141416 ;
+  color: #F4F4F5 ;
+}
+
+.dark .min-h-screen {
+  background-color: #141416 ;
+}
+
+.dark .bg-[#FDFAF6] {
+  background-color: #121214 ;
+}
+
+.dark .bg-white {
+  background-color: #1A1A1E ;
+  color: #F4F4F5 ;
+}
+
+.dark .text-[#2C2C2A] {
+  color: #E4E4E7 ;
+}
+
+.dark .text-[#3D405B] {
+  color: #FFFFFF ;
+}
+
+.dark .text-[#888780] {
+  color: #9A9A9F ;
+}
+
+.dark .border-[#D3D1C7],
+.dark .border-[#D3D1C7]\/70,
+.dark .border-[#D3D1C7]\/60,
+.dark .border-[#D3D1C7]\/30,
+.dark .border-[#D3D1C7]\/20 {
+  border-color: #2D2D32 ;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #222227 ;
+  border-color: #3F3F46 ;
+  color: #FFFFFF ;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #71717A ;
+}
+
+.dark aside,
+.dark dialog,
+.dark .bento-card {
+  background-color: #1A1A1E ;
+  border-color: #2D2D32 ;
+}
+
+.dark .bg-[#FDFAF6]\/30 {
+  background-color: #1E1E22 ;
+}
+
+.dark .bg-[#FDFAF6]\/50 {
+  background-color: #1E1E22/50 ;
+}
+
+.dark select option {
+  background-color: #1A1A1E ;
+  color: #FFFFFF ;
+}
+
+@keyframes bell-pulse {
+  0% { transform: scale(1); }
+  25% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg) scale(1.15); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-bell-pulse {
+  animation: bell-pulse 2s infinite ease-in-out;
+}
+
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, fill 0.4s ease;
+}
