@@ -76,7 +76,7 @@ export default function Onboarding({ onComplete, trackAnalytics }: OnboardingPro
       avatar_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDa0bMbMUrZzCaBUvWky7XIfPRMfS0AV8yUD30DNLtzJXLwlElPX8_Crgg23Q_Xryn3tJp7QvO1_7rSRk8VrAOVns0dU7-t5AHrusvQJDEeSg06CgyMTDexeYLrSFlDHeEqh7RUtNMymNtcnf5qVB6lhyHAR6Krv0uI9vFqOtt206PtNJMdN1_t8sP55fpuG94m_K-guz2Hi6grEnsOM29J1VdzfUXMU9HaO9MMYl9CxLCeW95-PoVo1VnxljsDeTzzO0W0WogykAA',
       bio: 'Welcome back!',
       species_preference: 'both',
-      joined_date: '09 Jun 2026',
+      joined_date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
     };
 
     trackAnalytics('app_open', { auth_method: 'email_login' });
@@ -95,7 +95,7 @@ export default function Onboarding({ onComplete, trackAnalytics }: OnboardingPro
       avatar_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDa0bMbMUrZzCaBUvWky7XIfPRMfS0AV8yUD30DNLtzJXLwlElPX8_Crgg23Q_Xryn3tJp7QvO1_7rSRk8VrAOVns0dU7-t5AHrusvQJDEeSg06CgyMTDexeYLrSFlDHeEqh7RUtNMymNtcnf5qVB6lhyHAR6Krv0uI9vFqOtt206PtNJMdN1_t8sP55fpuG94m_K-guz2Hi6grEnsOM29J1VdzfUXMU9HaO9MMYl9CxLCeW95-PoVo1VnxljsDeTzzO0W0WogykAA',
       bio: 'Eco-centric human exploring with tech-forward animals.',
       species_preference: 'both',
-      joined_date: '09 Jun 2026',
+      joined_date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
     };
 
     trackAnalytics('app_open', { auth_method: 'google_signin' });

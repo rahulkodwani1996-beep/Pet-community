@@ -238,7 +238,7 @@ export default function App() {
     setNotifications(sampleNotifications);
 
     // Trigger initial open event
-    trackAnalytics('app_open', { timestamp: '09 Jun 2026' });
+    trackAnalytics('app_open', { timestamp: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) });
 
     // Handle physical connection state listener
     const handleOnline = () => {
@@ -695,6 +695,8 @@ export default function App() {
             unreadCount={notifications.filter((n) => !n.read).length}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
+            currentUser={currentUser}
+            onSignUp={() => triggerSoftSignUp('create an account')}
           />
 
           {/* Core Content Canvas Swapper */}

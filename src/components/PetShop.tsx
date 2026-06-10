@@ -264,7 +264,7 @@ export default function PetShop({
       author_id: currentUser.user_id,
       rating: reviewRating,
       body: cleanBody,
-      created_at: '09 Jun 2026',
+      created_at: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
       helpful_count: 0,
       helpful_by: []
     };

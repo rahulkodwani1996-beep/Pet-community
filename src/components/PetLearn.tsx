@@ -476,7 +476,7 @@ export default function PetLearn({
       author_credentials: newAuthorCreds,
       thumbnail_url: newThumbnail || 'https://lh3.googleusercontent.com/aida-public/AB6AXuArGsuBNZJeVyZRb6wqvW3yNCH1JqD43bH4RJeBaRJmISarAy1SFYzViqPwy4ZNnOo6_Ak3i7I_wn7EApfP1DxuilGxNEPqtBsrlKUaamhcNb564BVh_ZB-ndyEun20vecmecMoIxfoMNAex_htQf3_Xe172zlBGFGGeN9VXOLvHkTkq6cPB42xFsdakIkd5pj7YqrZaPOf17MxpAAlih9H_nbiDzg-wiwVh-GPQ2Cz4LMn9OVYBvmUYvQQ4BEs9Jp4OiLH5ZqKU-s',
       read_time_mins: newReadMins,
-      created_at: '09 Jun 2026',
+      created_at: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
       is_featured: newFeatured,
       helpful_ups: [],
       helpful_downs: []

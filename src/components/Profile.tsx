@@ -187,7 +187,7 @@ export default function Profile({
     try {
       const stored = localStorage.getItem('pawpack_health_logs');
       return stored ? JSON.parse(stored) : [
-        { id: 'log_seed_1', pet_id: 'pet_1', date: '09 Jun 2026', activity: 8, nutrition: 7, mood: 9, hydration: 6, sleep: 8 },
+        { id: 'log_seed_1', pet_id: 'pet_1', date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }), activity: 8, nutrition: 7, mood: 9, hydration: 6, sleep: 8 },
         { id: 'log_seed_2', pet_id: 'pet_2', date: '08 Jun 2026', activity: 6, nutrition: 8, mood: 7, hydration: 5, sleep: 7 },
       ];
     } catch {
@@ -312,10 +312,10 @@ export default function Profile({
 
     const updatedUser: User = {
       ...currentUser,
-      display_name: editName,
+      display_name: editName || 'PawPack User',
       bio: editBio,
       location: editLocation,
-      avatar_url: editAvatar
+      avatar_url: editAvatar || defaultAvatars[0]
     };
 
     onUpdateProfile(updatedUser);

@@ -17,6 +17,8 @@ interface NavigationProps {
   unreadCount: number;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  currentUser: User | null;
+  onSignUp: () => void;
 }
 
 export default function Navigation({
@@ -28,7 +30,9 @@ export default function Navigation({
   onMarkNotificationsRead,
   unreadCount,
   searchQuery,
-  setSearchQuery
+  setSearchQuery,
+  currentUser,
+  onSignUp
 }: NavigationProps) {
 
   const speciesOptions = [
@@ -198,20 +202,30 @@ export default function Navigation({
           )}
         </div>
 
-        {/* Bell Action with slide down indicator - High-Interactive */}
-        <div className="relative group shrink-0">
-          <button
-            onClick={onMarkNotificationsRead}
-            className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#FDFAF6] border border-transparent hover:border-[#D3D1C7]/50 transition-all cursor-pointer active:scale-90"
-            title="Notification Center"
-          >
-            <Bell className={`w-4.5 h-4.5 text-[#3D405B] group-hover:rotate-12 transition-transform duration-200 ${unreadCount > 0 ? 'animate-bell-pulse' : ''}`} />
-            {unreadCount > 0 && (
-              <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#E07A5F] text-[9px] font-extrabold text-white flex items-center justify-center animate-bounce shadow-xs">
-                {unreadCount}
-              </span>
-            )}
-          </button>
+        <div className="flex items-center gap-1.5 shrink-0">
+          {!currentUser && (
+            <button
+              onClick={onSignUp}
+              className="px-3 py-1.5 bg-[#E07A5F] text-white text-[11px] font-bold rounded-xl hover:opacity-90 transition-opacity shadow-sm cursor-pointer whitespace-nowrap"
+            >
+              Sign Up
+            </button>
+          )}
+          {/* Bell Action with slide down indicator - High-Interactive */}
+          <div className="relative group shrink-0">
+            <button
+              onClick={onMarkNotificationsRead}
+              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#FDFAF6] border border-transparent hover:border-[#D3D1C7]/50 transition-all cursor-pointer active:scale-90"
+              title="Notification Center"
+            >
+              <Bell className={`w-4.5 h-4.5 text-[#3D405B] group-hover:rotate-12 transition-transform duration-200 ${unreadCount > 0 ? 'animate-bell-pulse' : ''}`} />
+              {unreadCount > 0 && (
+                <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#E07A5F] text-[9px] font-extrabold text-white flex items-center justify-center animate-bounce shadow-xs">
+                  {unreadCount}
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </header>
 

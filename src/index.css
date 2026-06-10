@@ -72,7 +72,7 @@
   background-color: #141416 ;
 }
 
-.dark .bg-[#FDFAF6] {
+.dark .bg-\[\#FDFAF6\] {
   background-color: #121214 ;
 }
 
@@ -81,23 +81,23 @@
   color: #F4F4F5 ;
 }
 
-.dark .text-[#2C2C2A] {
+.dark .text-\[\#2C2C2A\] {
   color: #E4E4E7 ;
 }
 
-.dark .text-[#3D405B] {
+.dark .text-\[\#3D405B\] {
   color: #FFFFFF ;
 }
 
-.dark .text-[#888780] {
+.dark .text-\[\#888780\] {
   color: #9A9A9F ;
 }
 
-.dark .border-[#D3D1C7],
-.dark .border-[#D3D1C7]\/70,
-.dark .border-[#D3D1C7]\/60,
-.dark .border-[#D3D1C7]\/30,
-.dark .border-[#D3D1C7]\/20 {
+.dark .border-\[\#D3D1C7\],
+.dark .border-\[\#D3D1C7\]\/70,
+.dark .border-\[\#D3D1C7\]\/60,
+.dark .border-\[\#D3D1C7\]\/30,
+.dark .border-\[\#D3D1C7\]\/20 {
   border-color: #2D2D32 ;
 }
 
@@ -121,11 +121,11 @@
   border-color: #2D2D32 ;
 }
 
-.dark .bg-[#FDFAF6]\/30 {
+.dark .bg-\[\#FDFAF6\]\/30 {
   background-color: #1E1E22 ;
 }
 
-.dark .bg-[#FDFAF6]\/50 {
+.dark .bg-\[\#FDFAF6\]\/50 {
   background-color: #1E1E22/50 ;
 }
 

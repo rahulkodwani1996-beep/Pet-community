@@ -461,7 +461,7 @@ export default function PetTalk({
       likes_count: 0,
       liked_by: [],
       comments: [],
-      created_at: '09 Jun 2026'
+      created_at: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
     };
 
     onAddPost(created);
